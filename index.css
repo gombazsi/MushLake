@@ -76,3 +76,46 @@ h2 {
     
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+#navbar-content {
+    max-width: 1280px;
+    height: var(--navbar-height);
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#navbar-link-mush_lake, 
+#navbar-link-at {
+    font-size: 4em;
+}
+
+#navbar-link-mush_lake {  
+    margin-right: 0.5em;  
+    text-decoration: underline;
+}
+
+#navbar-profile-pic {
+    height: 9em;
+    width: 9em;
+    margin-top: 1em;
+    border-radius: 50%;
+    background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar-profile-pic img {
+    width: 95%;
+    height: 95%;
+    object-fit: cover;
+    border-radius: 50%; 
+}
+
+
+
+
