@@ -5,6 +5,10 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script></head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap">
     <style>
+		:root {
+			--navbar-height: 120px;
+		}
+
         #canvas {
             border: 1px solid black;
             width: 100%;
@@ -24,7 +28,7 @@
             color: white;
         }
 
-        #segment {
+        .segment {
             margin: 50px;
 
             width: 90%;
@@ -43,6 +47,10 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
+		body > .segment{
+			margin-top: calc(50px + var(--navbar-height));
+		}
+
         h2 {
             font-weight: 700;
             letter-spacing: 5px;
@@ -57,11 +65,31 @@
         .grid-item img{
             max-width: 100%;
         }
+
+        #navbar {
+			height: var(--navbar-height);
+			width: 100%;
+
+			position: fixed;
+			top: 0;
+			z-index: 999;
+
+            /* From https://css.glass */
+			background: rgba(0, 0, 0, 0.85);
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			backdrop-filter: blur(5px);
+			-webkit-backdrop-filter: blur(5px);
+			
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
     </style>
     <body>
         <canvas id="canvas" width="1920" height="1080"></canvas>
+
+        <div id="navbar">
+        </div>
         
-        <div id="segment">
+        <div class="segment">
           <h2>
               Live visuals all night
           </h2>
@@ -83,7 +111,7 @@
             </div>
       </div>
 
-        <div id="segment">
+        <div class="segment">
             <h2>
                 3D Logo animations
             </h2>
@@ -102,7 +130,7 @@
               </div>
         </div>
         
-        <div id="segment">
+        <div class="segment">
             <h2>
                 Audioreactive effects
             </h2>
@@ -130,7 +158,7 @@
               </div>
         </div>
 
-        <div id="segment">
+        <div class="segment">
             <h2>
                 Promo videos
             </h2>
@@ -152,10 +180,6 @@
               </div>
         </div>
 
-        
-
-        <div style="height: 3000px;">
-        </div>
         <script type="text/javascript" src="lines.js"></script>
         <script>        
             handleScroll();
