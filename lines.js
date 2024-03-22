@@ -7,7 +7,7 @@ function handleScroll() {
     const canvasWidth = 1920;
     const canvasHeight = 1080;
     const resolution = 100;
-    const numberOfLines = 8;
+    const numberOfLines = 10;
     const lineWidth = 5;
     const color = "#00ff00";
     
@@ -38,7 +38,7 @@ function handleScroll() {
 }  
 
 function getY(i, resolution, canvasHeight, speed, modifier) {
-    const constModifier = 0.2;
+    const constModifier = 0.1;
     return canvasHeight / 2 + /*Math.sin(i / resolution)*/ i * modifier * constModifier * speed;
 }            
 
