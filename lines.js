@@ -38,7 +38,7 @@ function handleScroll() {
 }  
 
 function getY(i, resolution, canvasHeight, speed, modifier) {
-    const constModifier = 50;
+    const constModifier = 20;
     return canvasHeight / 2 + /*Math.sin(i / resolution)*/ i * modifier * constModifier * speed;
 }            
 
