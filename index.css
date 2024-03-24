@@ -116,6 +116,35 @@ h2 {
     border-radius: 50%; 
 }
 
+.content video:hover, content img:hover {    
+    border: 5px solid transparent;
+    cursor: pointer;
+    animation: fillBorder 0.5s forwards;
+}
 
-
-
+@keyframes fillBorder {
+    0% {
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+    25% {
+      border-top-color: rgba(0, 255, 0, 0.8);
+    }
+    50% {
+      border-top-color: rgba(0, 255, 0, 0.8);
+      border-right-color: rgba(0, 255, 0, 0.8);
+    }
+    75% {
+      border-top-color: rgba(0, 255, 0, 0.8);
+      border-right-color: rgba(0, 255, 0, 0.8);
+      border-bottom-color: rgba(0, 255, 0, 0.8);
+    }
+    100% {
+      border-top-color: rgba(0, 255, 0, 0.8);
+      border-right-color: rgba(0, 255, 0, 0.8);
+      border-bottom-color: rgba(0, 255, 0, 0.8);
+      border-left-color: rgba(0, 255, 0, 0.8);
+    }
+  }
