@@ -6,6 +6,10 @@ const segments = [{
             {
                 name: "dark sky 3.mp4",
                 id: "video-logo-dark-sky-3"
+            },
+            {
+                name: "planet 2.mp4",
+                id: "video-logo-planet-2"
             }
         ]
     }
@@ -24,6 +28,8 @@ function openModal(src){
 
 function enableVjsFill(){
     var player = videojs(segments[0].content.assets[0].id);
+    player.fill(true);
+    var player = videojs(segments[0].content.assets[1].id);
     player.fill(true);
     
     var modalPlayer = videojs("video-player-modal");
