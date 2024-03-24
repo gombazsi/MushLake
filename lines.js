@@ -1,5 +1,5 @@
 function handleScroll() {
-    const canvas = document.getElementById("canvas");
+    const canvas = document.getElementById("canvas");    
     const ctx = canvas.getContext("2d");
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
@@ -22,7 +22,7 @@ function handleScroll() {
     for(var i = 0; i < numberOfLines; i++){
         ctx.moveTo(0, canvasHeight / 2);
         for(var j = 0; j < resolution + 1; j++){
-            ctx.lineTo(canvasWidth / resolution * (j) , getY(j, resolution, canvasHeight, speed, i+1))
+            ctx.lineTo(canvasWidth / resolution * (j) , getY(j, resolution, canvasHeight / 2, speed, i+1))
         }
         ctx.stroke();
     }
@@ -30,16 +30,27 @@ function handleScroll() {
     for(var i = 0; i < numberOfLines; i++){
         ctx.moveTo(canvasWidth, canvasHeight / 2);
         for(var j = 0; j < resolution + 1; j++){
-            ctx.lineTo(canvasWidth - canvasWidth / resolution * (j) , getY(j, resolution, canvasHeight, speed, i+1))
+            ctx.lineTo(canvasWidth - canvasWidth / resolution * (j) , getY(j, resolution, canvasHeight / 2, speed, i+1))
         }
         ctx.stroke();
     }
     
 }  
 
-function getY(i, resolution, canvasHeight, speed, modifier) {
+function getY(i, resolution, base, speed, modifier) {
+    const limit = 2000;
     const constModifier = 20;
-    return canvasHeight / 2 + /*Math.sin(i / resolution)*/ i * modifier * constModifier * speed;
+    var y = i * modifier * constModifier * speed;
+    
+    if(speed < 0){
+        y = Math.max(y, limit * (-1));
+    } 
+    else{
+        y = Math.min(y, limit);
+    }  
+
+    return (base + y);
+
 }            
 
 var getScrollSpeed = (function(){            
