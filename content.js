@@ -11,7 +11,21 @@ const segments = [{
     }
 }]
 
+function openModal(src){
+    var modalPlayer = videojs("video-player-modal");
+    modalPlayer.src({type: 'video/mp4', src: src});
+    modalPlayer.fill();
+    
+    const modal = document.getElementById("player-modal");
+    modal.classList.add("modal-open");
+    const overlay = document.getElementById("overlay");
+    overlay.classList.add("modal-open");
+}
+
 function enableVjsFill(){
     var player = videojs(segments[0].content.assets[0].id);
     player.fill(true);
+    
+    var modalPlayer = videojs("video-player-modal");
+    modalPlayer.fill(true);
 }
