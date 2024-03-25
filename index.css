@@ -40,7 +40,7 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-body > .segment{
+#segments-container {
     margin-top: calc(50px + var(--navbar-height));
 }
 
@@ -165,6 +165,28 @@ h2 {
     display: block !important;
 }
 
+.container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.content {
+    position: relative;
+    width: 30%;
+    padding-top: 17%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.content .vjs-auto-height {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 @keyframes fillBorder {
     0% {
       border-top-color: transparent;
@@ -194,19 +216,11 @@ h2 {
 
 @media only screen and (max-width: 991px) {
     .content {
-        position: relative; /* Required for absolute positioning of child */
-        width: 100%; /* Set width to fill container */
-        padding-top: 56.25%; /* Set height to maintain 16:9 aspect ratio (9 / 16 * 100%) */
-        margin-top: 40px;
-        margin-bottom: 40px;
+        width: 100%;        
+        padding-top: 56.25%;
     }
-    
-    .content .vjs-auto-height {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Optional: Ensure image fills the container */
+
+    .container {
+        display: block;
     }
 }
