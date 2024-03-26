@@ -1,0 +1,50 @@
+.accordion {
+    --bs-accordion-color: unset;
+    --bs-accordion-bg: unset;
+    --bs-accordion-transition: unset;
+    --bs-accordion-border-color: unset;
+    --bs-accordion-border-width: unset;
+    --bs-accordion-border-radius: unset;
+    --bs-accordion-inner-border-radius: unset;
+    --bs-accordion-btn-padding-x: unset;
+    --bs-accordion-btn-padding-y: unset;
+    --bs-accordion-btn-color: unset;
+    --bs-accordion-btn-bg: unset;
+    --bs-accordion-btn-icon: unset;
+    --bs-accordion-btn-icon-width: unset;
+    --bs-accordion-btn-icon-transform: unset;
+    --bs-accordion-btn-icon-transition: unset;
+    --bs-accordion-btn-active-icon: unset;
+    --bs-accordion-btn-focus-box-shadow: unset;
+    --bs-accordion-body-padding-x: unset;
+    --bs-accordion-body-padding-y: unset;
+    --bs-accordion-active-color: unset;
+    --bs-accordion-active-bg: unset;
+}
+
+.accordion-button {
+    position: unset;
+    display: unset;
+    align-items: unset;
+    width: unset;
+    padding: unset;
+    font-size: unset;
+    color: unset;
+    text-align: unset;
+    background-color: unset;
+    border: unset;
+    border-radius: unset;
+    overflow-anchor: unset;
+    transition: unset;
+}
+
+.accordion-item:first-of-type {
+    border-top-left-radius: var(--segment-border-radius);
+    border-top-right-radius: var(--segment-border-radius);
+}
+
+.accordion-item:last-of-type {
+    border-bottom-right-radius: var(--segment-border-radius);
+    border-bottom-left-radius: var(--segment-border-radius);
+}
+

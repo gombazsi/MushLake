@@ -1,6 +1,7 @@
 const segments = [
     {
         name: "3d logo animations",
+        id: "3d-logo-animations",
         content: {
             assets:[
                 {
@@ -36,23 +37,30 @@ const segments = [
 function createSegments() {
     const segmentsContainer = document.getElementById("segments-container");
 
-    segments.forEach(segment => {
-        // Create HTML for the segment
-        const segmentHTML = `
-            <div class="segment">
-                <h2>${segment.name}</h2>
-                <div class="container">
-                    ${segment.content ? segment.content.assets.map(asset => `
-                        <div class="content" onclick="openModal('assets/content/${asset.name}')">
-                            <video class="video-js vjs-fill vjs-auto-height" id="${asset.id}" data-setup="{}" loop="true" autoplay="true" muted>
-                                <source src="assets/preview/${asset.name}" type="video/mp4" />
-                            </video>
-                        </div>
-                    `).join('') : ''}
+segments.forEach((segment, index) => {
+    // Create HTML for the segment
+    const segmentHTML = `
+        <div class="accordion-item segment">
+            <h2 class="accordion-header" id="heading${index}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
+                    ${segment.name}
+                </button>
+            </h2>
+            <div id="collapse${index}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" aria-labelledby="heading${index}" data-bs-parent="#segments-container">
+                <div class="accordion-body">
+                    <div class="container">
+                        ${segment.content ? segment.content.assets.map(asset => `
+                            <div class="content" onclick="openModal('assets/content/${asset.name}')">
+                                <video class="video-js vjs-fill vjs-auto-height" id="${asset.id}" data-setup="{}" loop="true" autoplay="true" muted>
+                                    <source src="assets/preview/${asset.name}" type="video/mp4" />
+                                </video>
+                            </div>
+                        `).join('') : ''}
+                    </div>
                 </div>
             </div>
-        `;
-        
+        </div>`;
+
         // Append the segment HTML to the container
         segmentsContainer.innerHTML += segmentHTML;
     });
