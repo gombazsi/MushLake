@@ -136,6 +136,36 @@ h2 {
     transition: opacity 0.3s ease;
 }
 
+#player-modal-close {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 4;
+}
+
+#player-modal-close svg,
+#player-modal-next svg,
+#player-modal-prev svg {
+    width: 32px;
+    height: 32px;
+}
+
+#player-modal-next, #player-modal-prev {
+    cursor: pointer;
+    position: absolute;
+    bottom: 50%;
+    z-index: 4;
+}
+
+#player-modal-next {
+    right: 10px;
+}
+
+#player-modal-prev {
+    left: 10px;
+}
+
 #overlay {
     position: fixed;
     top: 0;

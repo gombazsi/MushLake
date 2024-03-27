@@ -25,27 +25,27 @@
         </div>
 
 		<div id="player-modal">
+			<div id="player-modal-close" onclick="closeModal()">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#00ff00" class="bi bi-x" viewBox="0 0 16 16">
+					<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+				</svg>
+			</div>
+			<div id="player-modal-next" onclick="modalNext()">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#00ff00" class="bi bi-caret-right" viewBox="0 0 16 16">
+					<path d="M6 12.796V3.204L11.481 8zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753"/>
+				</svg>
+			</div>
+			<div id="player-modal-prev" onclick="modalPrev()">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#00ff00" class="bi bi-caret-left" viewBox="0 0 16 16">
+					<path d="M10 12.796V3.204L4.519 8zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753"/>
+				</svg>
+			</div>
 			<video class="video-js vjs-fill" id="video-player-modal" data-setup="{}" loop="true" autoplay="true" muted controls>
 				<source src="assets/content/dark sky 3.mp4" type="video/mp4" />
 			</video>
 		</div>
 
 		<div id="segments-container"></div>
-
-		<!-- <div class="accordion">
-			<div class="accordion-item">
-			  <h2 class="accordion-header" id={{segment.id}}>
-				<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-					{{segment.name}}
-				</button>
-			  </h2>
-			  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="{{segment.id}}" data-bs-parent="#accordionExample">
-				<div class="accordion-body">
-				    {{current container class element}}
-				</div>
-			  </div>
-			</div>
-		</div> -->
         		
         <script type="text/javascript" src="lines.js"></script>
         <script>handleScroll(); window.addEventListener('scroll', (event) => handleScroll());</script>

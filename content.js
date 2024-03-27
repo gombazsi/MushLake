@@ -33,36 +33,46 @@ const segments = [
     }
 ]
 
+const assets = [];
+const assetsDir = "assets/content";
+var openSrc;
+
 // Function to create segments dynamically
 function createSegments() {
     const segmentsContainer = document.getElementById("segments-container");
 
-segments.forEach((segment, index) => {
-    // Create HTML for the segment
-    const segmentHTML = `
-        <div class="accordion-item segment">
-            <h2 class="accordion-header" id="heading${index}">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
-                    ${segment.name}
-                </button>
-            </h2>
-            <div id="collapse${index}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" aria-labelledby="heading${index}" data-bs-parent="#segments-container">
-                <div class="accordion-body">
-                    <div class="container">
-                        ${segment.content ? segment.content.assets.map(asset => `
-                            <div class="content" onclick="openModal('assets/content/${asset.name}')">
-                                <video class="video-js vjs-fill vjs-auto-height" id="${asset.id}" data-setup="{}" loop="true" autoplay="true" muted>
-                                    <source src="assets/preview/${asset.name}" type="video/mp4" />
-                                </video>
-                            </div>
-                        `).join('') : ''}
+    segments.forEach((segment, index) => {
+        // Create HTML for the segment
+        const segmentHTML = `
+            <div class="accordion-item segment">
+                <h2 class="accordion-header" id="heading${index}">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
+                        ${segment.name}
+                    </button>
+                </h2>
+                <div id="collapse${index}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" aria-labelledby="heading${index}" data-bs-parent="#segments-container">
+                    <div class="accordion-body">
+                        <div class="container">
+                            ${segment.content ? segment.content.assets.map(asset => `
+                                <div class="content" onclick="openModal('${assetsDir}/${asset.name}')">
+                                    <video class="video-js vjs-fill vjs-auto-height" id="${asset.id}" data-setup="{}" loop="true" autoplay="true" muted>
+                                        <source src="assets/preview/${asset.name}" type="video/mp4" />
+                                    </video>
+                                </div>
+                            `).join('') : ''}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>`;
+            </div>`;
 
-        // Append the segment HTML to the container
-        segmentsContainer.innerHTML += segmentHTML;
+            // Append the segment HTML to the container
+            segmentsContainer.innerHTML += segmentHTML;
+
+            if (segment.content && segment.content.assets) {
+                segment.content.assets.forEach(asset => {
+                    assets.push(asset.name);
+                });
+            }
     });
 }
 
@@ -79,6 +89,27 @@ function openModal(src){
     modal.classList.add("modal-open");
     const overlay = document.getElementById("overlay");
     overlay.classList.add("modal-open");
+
+    openSrc = src;
+}
+
+function modalNext(){
+    const currentIdx = assets.findIndex(a => assetsDir+'/'+a === openSrc);
+    const nextIndex = assets.length == currentIdx + 1 ? 0 : currentIdx + 1;
+    openModal(assetsDir+"/"+assets[nextIndex]);
+}
+
+function modalPrev(){
+    const currentIdx = assets.findIndex(a => assetsDir+'/'+a === openSrc);
+    const prevIndex = currentIdx == 0 ? assets.length - 1 : currentIdx - 1;
+    openModal(assetsDir+"/"+assets[prevIndex]);
+}
+
+function closeModal(){
+    const modal = document.getElementById("player-modal");
+    modal.classList.remove("modal-open");
+    const overlay = document.getElementById("overlay");
+    overlay.classList.remove("modal-open");
 }
 
 function enableVjsFill(){
