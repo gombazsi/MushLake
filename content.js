@@ -109,7 +109,6 @@ function openModal(src){
 function modalNext(){
     const currentIdx = assets.findIndex(a => assetsDir+'/'+a+".mp4" === openSrc);
     const nextIndex = assets.length == currentIdx + 1 ? 0 : currentIdx + 1;
-    console.log(assets, openSrc)
     openModal(assetsDir+"/"+assets[nextIndex]+".mp4");
 }
 
