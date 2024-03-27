@@ -15,6 +15,30 @@ const segments = [
                 {
                     name: "planet 3.mp4",
                     id: "video-logo-planet-3"
+                },
+                {
+                    name: "cv 3.mp4",
+                    id: "cv-3"
+                },
+                {
+                    name: "castle 2.mp4",
+                    id: "castle-2"
+                },
+                {
+                    name: "cv 2.mp4",
+                    id: "cv-2"
+                },
+                {
+                    name: "red sky 2.mp4",
+                    id: "red-sky-2"
+                },
+                {
+                    name: "red sky 3 shatter.mp4",
+                    id: "red-sky-3-shatter"
+                },
+                {
+                    name: "red sky 1.mp4",
+                    id: "red-sky-1"
                 }
             ]
         }
@@ -76,10 +100,6 @@ function createSegments() {
     });
 }
 
-// Call the function to create segments when the page loads
-window.onload = createSegments;
-
-
 function openModal(src){
     var modalPlayer = videojs("video-player-modal");
     modalPlayer.src({type: 'video/mp4', src: src});
@@ -91,6 +111,7 @@ function openModal(src){
     overlay.classList.add("modal-open");
 
     openSrc = src;
+    addSwipeHandler();
 }
 
 function modalNext(){
@@ -112,12 +133,38 @@ function closeModal(){
     overlay.classList.remove("modal-open");
 }
 
+function addSwipeHandler() {
+    var swipeContainer = document.getElementById('player-modal');
+    var hammer = new Hammer(swipeContainer);
+
+    // Define swipe event handling
+    hammer.on('swipeleft', function() {
+        modalPrev();
+    });
+
+    hammer.on('swiperight', function() {
+        modalNext();
+    });
+}
+
 function enableVjsFill(){
-    var player = videojs(segments[0].content.assets[0].id);
-    player.fill(true);
-    var player = videojs(segments[0].content.assets[1].id);
-    player.fill(true);
+    segments.forEach(segment => {
+        if (segment.content && segment.content.assets) {
+            segment.content.assets.forEach(asset => {
+                var player = videojs(asset.id);
+                player.fill(true);
+            });
+        }
+
+    })
     
     var modalPlayer = videojs("video-player-modal");
     modalPlayer.fill(true);
+}
+
+function onInit(){
+    createSegments();
+    enableVjsFill();
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
 }

@@ -72,4 +72,4 @@ var getScrollSpeed = (function(){
         timer = setTimeout(clear, delay);
         return delta;
     };
-})();                   
+})();     
