@@ -140,17 +140,7 @@ function addSwipeHandler() {
     });
 }
 
-function enableVjsFill(){
-    // segments.forEach(segment => {
-    //     if (segment.content && segment.content.assets) {
-    //         segment.content.assets.forEach(asset => {
-    //             var player = videojs(asset.id);
-    //             player.fill(true);
-    //         });
-    //     }
-
-    // })
-    
+function enableVjsFill(){    
     var modalPlayer = videojs("video-player-modal");
     modalPlayer.fill(true);
 }
