@@ -111,7 +111,7 @@ h2 {
     border-radius: 50%; 
 }
 
-.content video:hover, content img:hover {    
+.content .preview-image:hover {    
     cursor: pointer;
     border: 5px solid transparent;
     animation: fillBorder 0.5s forwards;
@@ -146,7 +146,7 @@ h2 {
 
 #player-modal-close svg,
 #player-modal-next svg,
-#player-modal-prev svg {
+#player-modal-prev svg{
     width: 32px;
     height: 32px;
 }
@@ -164,6 +164,18 @@ h2 {
 
 #player-modal-prev {
     left: 10px;
+}
+
+.content:hover svg {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    left: 50%;
+    top: 50%;
+    z-index: 4;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 #overlay {
@@ -204,7 +216,7 @@ h2 {
     margin-bottom: 40px;
 }
 
-.content .vjs-auto-height {
+.content .preview-image {
     position: absolute;
     top: 0;
     left: 0;

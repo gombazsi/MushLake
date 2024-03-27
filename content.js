@@ -5,40 +5,31 @@ const segments = [
         content: {
             assets:[
                 {
-                    name: "dark sky 3.mp4",
-                    id: "video-logo-dark-sky-3",
+                    name: "dark sky 3"
                 },
                 {
-                    name: "planet 2.mp4",
-                    id: "video-logo-planet-2"
+                    name: "planet 2"
                 },
                 {
-                    name: "planet 3.mp4",
-                    id: "video-logo-planet-3"
+                    name: "planet 3"
                 },
                 {
-                    name: "cv 3.mp4",
-                    id: "cv-3"
+                    name: "cv 3"
                 },
                 {
-                    name: "castle 2.mp4",
-                    id: "castle-2"
+                    name: "castle 2"
                 },
                 {
-                    name: "cv 2.mp4",
-                    id: "cv-2"
+                    name: "cv 2"
                 },
                 {
-                    name: "red sky 2.mp4",
-                    id: "red-sky-2"
+                    name: "red sky 2"
                 },
                 {
-                    name: "red sky 3 shatter.mp4",
-                    id: "red-sky-3-shatter"
+                    name: "red sky 3 shatter"
                 },
                 {
-                    name: "red sky 1.mp4",
-                    id: "red-sky-1"
+                    name: "red sky 1"
                 }
             ]
         }
@@ -78,10 +69,11 @@ function createSegments() {
                     <div class="accordion-body">
                         <div class="container">
                             ${segment.content ? segment.content.assets.map(asset => `
-                                <div class="content" onclick="openModal('${assetsDir}/${asset.name}')">
-                                    <video class="video-js vjs-fill vjs-auto-height" id="${asset.id}" data-setup="{}" loop="true" autoplay="true" muted>
-                                        <source src="assets/preview/${asset.name}" type="video/mp4" />
-                                    </video>
+                                <div class="content" onclick="openModal('${assetsDir}/${asset.name}.mp4')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#00ff00" class="bi bi-play-btn-fill" viewBox="0 0 16 16">
+                                        <path d="M0 12V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2m6.79-6.907A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+                                    </svg>
+                                    <img class="preview-image" src="assets/preview/${asset.name}.jpg"/>
                                 </div>
                             `).join('') : ''}
                         </div>
@@ -115,15 +107,16 @@ function openModal(src){
 }
 
 function modalNext(){
-    const currentIdx = assets.findIndex(a => assetsDir+'/'+a === openSrc);
+    const currentIdx = assets.findIndex(a => assetsDir+'/'+a+".mp4" === openSrc);
     const nextIndex = assets.length == currentIdx + 1 ? 0 : currentIdx + 1;
-    openModal(assetsDir+"/"+assets[nextIndex]);
+    console.log(assets, openSrc)
+    openModal(assetsDir+"/"+assets[nextIndex]+".mp4");
 }
 
 function modalPrev(){
-    const currentIdx = assets.findIndex(a => assetsDir+'/'+a === openSrc);
+    const currentIdx = assets.findIndex(a => assetsDir+'/'+a+".mp4" === openSrc);
     const prevIndex = currentIdx == 0 ? assets.length - 1 : currentIdx - 1;
-    openModal(assetsDir+"/"+assets[prevIndex]);
+    openModal(assetsDir+"/"+assets[prevIndex]+".mp4");
 }
 
 function closeModal(){
@@ -148,15 +141,15 @@ function addSwipeHandler() {
 }
 
 function enableVjsFill(){
-    segments.forEach(segment => {
-        if (segment.content && segment.content.assets) {
-            segment.content.assets.forEach(asset => {
-                var player = videojs(asset.id);
-                player.fill(true);
-            });
-        }
+    // segments.forEach(segment => {
+    //     if (segment.content && segment.content.assets) {
+    //         segment.content.assets.forEach(asset => {
+    //             var player = videojs(asset.id);
+    //             player.fill(true);
+    //         });
+    //     }
 
-    })
+    // })
     
     var modalPlayer = videojs("video-player-modal");
     modalPlayer.fill(true);
