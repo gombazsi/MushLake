@@ -21,20 +21,25 @@ function handleScroll() {
     // Define a start point
     for(var i = 0; i < numberOfLines; i++){
         ctx.moveTo(0, canvasHeight / 2);
-        for(var j = 1; j < resolution + 1; j++){
-            ctx.lineTo(canvasWidth / resolution * (j) , getY(j, resolution, canvasHeight / 2, speed, i+1))
+        for(var j = 1; j < resolution + 1; j++){ 
+            const y = getY(j, resolution, canvasHeight / 2, speed, i+1);
+            if(!(speed != 0 && y == 0)){
+                ctx.lineTo(canvasWidth / resolution * (j) , y);
+            }
         }
-        ctx.stroke();
     }
 
     for(var i = 0; i < numberOfLines; i++){
         ctx.moveTo(canvasWidth, canvasHeight / 2);
         for(var j = 1; j < resolution + 1; j++){
-            ctx.lineTo(canvasWidth - canvasWidth / resolution * (j) , getY(j, resolution, canvasHeight / 2, speed, i+1))
-        }
-        ctx.stroke();
+            const y = getY(j, resolution, canvasHeight / 2, speed, i+1);
+            if(!(speed != 0 && y == 0)){
+                ctx.lineTo(canvasWidth - canvasWidth / resolution * (j) , y)
+            }
+        }        
     }
     
+    ctx.stroke();
 }  
 
 function getY(i, resolution, base, speed, modifier) {
@@ -44,16 +49,11 @@ function getY(i, resolution, base, speed, modifier) {
     
     if(speed < 0){
         y = Math.max(y, limit * (-1));
-        if (y == 0){
-            y = i * modifier * constModifier * constModifier;
-        }
     } 
-    else if (speed > 0){
+    else{
         y = Math.min(y, limit);
-        if (y == 0){
-            y = i * modifier * constModifier * constModifier * (-1);
-        }
     }  
+    
 
     return (base + y);
 
