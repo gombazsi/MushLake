@@ -21,7 +21,7 @@ function handleScroll() {
     // Define a start point
     for(var i = 0; i < numberOfLines; i++){
         ctx.moveTo(0, canvasHeight / 2);
-        for(var j = 0; j < resolution + 1; j++){
+        for(var j = 1; j < resolution + 1; j++){
             ctx.lineTo(canvasWidth / resolution * (j) , getY(j, resolution, canvasHeight / 2, speed, i+1))
         }
         ctx.stroke();
@@ -29,7 +29,7 @@ function handleScroll() {
 
     for(var i = 0; i < numberOfLines; i++){
         ctx.moveTo(canvasWidth, canvasHeight / 2);
-        for(var j = 0; j < resolution + 1; j++){
+        for(var j = 1; j < resolution + 1; j++){
             ctx.lineTo(canvasWidth - canvasWidth / resolution * (j) , getY(j, resolution, canvasHeight / 2, speed, i+1))
         }
         ctx.stroke();
