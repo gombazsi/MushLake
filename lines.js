@@ -44,9 +44,15 @@ function getY(i, resolution, base, speed, modifier) {
     
     if(speed < 0){
         y = Math.max(y, limit * (-1));
+        if (y == 0){
+            y = i * modifier * constModifier * constModifier;
+        }
     } 
-    else{
+    else if (speed > 0){
         y = Math.min(y, limit);
+        if (y == 0){
+            y = i * modifier * constModifier * constModifier * (-1);
+        }
     }  
 
     return (base + y);
