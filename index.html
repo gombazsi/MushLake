@@ -18,13 +18,20 @@
 		<div id="overlay" onclick="closeModal()"></div>
 
         <div id="navbar">
-			<div id="navbar-content" onclick="openInsta()">
-				<div id="navbar-link-at">@</div>
-				<div id="navbar-link-mush_lake">mush_lake</div>
-				<div id="navbar-profile-pic" onclick="openInsta()">
-					<img src="assets/profile_pic.jpg" alt="Profile Picture">
+			<div id="navbar-container">
+				<div id="navbar-logos">
+					<img src="assets/collab_logo.png" alt="col:lab" onclick="openInsta('col_lab_')">
+					<img src="assets/rollers_logo.png" alt="Rollers Society" onclick="openInsta('rollerssocietydnb')">
+				</div>
+				<div id="navbar-content" onclick="openInsta('mush_lake')">
+					<div id="navbar-link-at">@</div>
+					<div id="navbar-link-mush_lake">mush_lake</div>
+					<div id="navbar-profile-pic" onclick="openInsta('mush_lake')">
+						<img src="assets/profile_pic.jpg" alt="Profile Picture">
+					</div>
 				</div>
 			</div>
+			
         </div>
 
 		<div id="player-modal">
