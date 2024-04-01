@@ -1,8 +1,6 @@
 function handleScroll() {
     const canvas = document.getElementById("canvas");    
     const ctx = canvas.getContext("2d");
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
     
     const canvasWidth = 1920;
     const canvasHeight = 1080;
@@ -12,34 +10,37 @@ function handleScroll() {
     const color = "#00ff00";
     
     const speed = getScrollSpeed();
+    const base = canvasHeight / 2;
     
     ctx.strokeStyle = color;
     ctx.lineWidth = lineWidth;
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    ctx.beginPath();
-    
-    // Define a start point
-    for(var i = 0; i < numberOfLines; i++){
-        ctx.moveTo(0, canvasHeight / 2);
+        
+    for(var i = 0; i < numberOfLines; i++){        
+        ctx.beginPath();    
+        ctx.moveTo(0, base);
         for(var j = 1; j < resolution + 1; j++){ 
-            const y = getY(j, resolution, canvasHeight / 2, speed, i+1);
-            if(!(speed != 0 && y == 0)){
+            const y = getY(j, resolution, base, speed, i+1);
+            if(y != base){
                 ctx.lineTo(canvasWidth / resolution * (j) , y);
+                ctx.stroke();
             }
         }
     }
 
-    for(var i = 0; i < numberOfLines; i++){
-        ctx.moveTo(canvasWidth, canvasHeight / 2);
+    for(var i = 0; i < numberOfLines; i++){      
+        ctx.beginPath();    
+        ctx.moveTo(canvasWidth, base);
         for(var j = 1; j < resolution + 1; j++){
-            const y = getY(j, resolution, canvasHeight / 2, speed, i+1);
-            if(!(speed != 0 && y == 0)){
+            const y = getY(j, resolution, base, speed, i+1);
+            if(y != base){
                 ctx.lineTo(canvasWidth - canvasWidth / resolution * (j) , y)
+                ctx.stroke();
             }
         }        
     }
     
-    ctx.stroke();
+    
 }  
 
 function getY(i, resolution, base, speed, modifier) {
