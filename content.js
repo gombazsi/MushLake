@@ -14,6 +14,13 @@ function openModal(src){
 
     openSrc = src;
     addSwipeHandler();
+    
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('touchmove', preventMobileScroll, { passive: false });
+}
+
+function preventMobileScroll(event) {
+    event.preventDefault();
 }
 
 function modalNext(){
@@ -33,6 +40,9 @@ function closeModal(){
     modal.classList.remove("modal-open");
     const overlay = document.getElementById("overlay");
     overlay.classList.remove("modal-open");
+
+    document.body.style.overflow = 'auto';
+    document.removeEventListener('touchmove', preventMobileScroll);
 }
 
 var canSwipe = true;
