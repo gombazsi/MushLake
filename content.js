@@ -1,6 +1,6 @@
 const segments = [
     {
-        name: "3d logo animations",
+        name: "3D logo animations",
         id: "3d-logo-animations",
         content: {
             assets:[
@@ -107,13 +107,13 @@ function openModal(src){
 }
 
 function modalNext(){
-    const currentIdx = assets.findIndex(a => assetsDir+'/'+a+".mp4" === openSrc);
+    const currentIdx = assets.findIndex(a => `${assetsDir}/${a}.mp4` === openSrc);
     const nextIndex = assets.length == currentIdx + 1 ? 0 : currentIdx + 1;
     openModal(assetsDir+"/"+assets[nextIndex]+".mp4");
 }
 
 function modalPrev(){
-    const currentIdx = assets.findIndex(a => assetsDir+'/'+a+".mp4" === openSrc);
+    const currentIdx = assets.findIndex(a => `${assetsDir}/${a}.mp4` === openSrc);
     const prevIndex = currentIdx == 0 ? assets.length - 1 : currentIdx - 1;
     openModal(assetsDir+"/"+assets[prevIndex]+".mp4");
 }
@@ -125,18 +125,34 @@ function closeModal(){
     overlay.classList.remove("modal-open");
 }
 
+var canSwipe = true;
+
 function addSwipeHandler() {
     var swipeContainer = document.getElementById('player-modal');
     var hammer = new Hammer(swipeContainer);
 
-    // Define swipe event handling
     hammer.on('swipeleft', function() {
-        modalPrev();
+        if(canSwipe){     
+            modalNext();
+            resetSwipeDebounce();
+        }
     });
 
     hammer.on('swiperight', function() {
-        modalNext();
+        if(canSwipe){             
+            modalPrev();
+            resetSwipeDebounce();
+        }
     });
+}
+
+function resetSwipeDebounce(){    
+    canSwipe = false;
+    const debounceMs = 300;
+
+    setTimeout(function() {
+        canSwipe = true;
+    }, debounceMs)
 }
 
 function enableVjsFill(){    
