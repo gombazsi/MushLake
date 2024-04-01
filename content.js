@@ -76,3 +76,7 @@ function onInit(){
     handleScroll();
     window.addEventListener('scroll', handleScroll);
 }
+
+function openInsta(){
+    window.open("https://www.instagram.com/mush_lake", "_blank");
+}
