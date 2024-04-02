@@ -35,7 +35,30 @@ const segments = [
         }
     },
     {
-        name: "Live visuals all night"
+        name: "Live visuals all night",
+        id: "3d-logo-animations",
+        content: {
+            assets:[
+                {
+                    name: "symplex"
+                },
+                {
+                    name: "goryo"
+                },
+                {
+                    name: "acray"
+                },
+                {
+                    name: "cv"
+                },
+                {
+                    name: "collab dark"
+                },
+                {
+                    name: "collab"
+                },
+            ]
+        }
     },
     {
         name: "Custom VJ loops"
