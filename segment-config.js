@@ -90,7 +90,21 @@ const segments = [
         }
     },
     {
-        name: "Promo videos"
+        name: "Promo videos",
+        id: "promo-videos",
+        content: {
+            assets:[
+                {
+                    name: "fusion1_3"
+                },
+                {
+                    name: "cd_promo_2"
+                },
+                {
+                    name: "promo_v2"
+                }
+            ]
+        }
     }
 ]
 
