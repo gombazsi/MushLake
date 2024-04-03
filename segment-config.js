@@ -102,7 +102,7 @@ function createSegments() {
         const segmentHTML = `
             <div class="accordion-item segment">
                 <h2 class="accordion-header" id="heading${index}">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}" onclick="scrollToTop()">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
                         ${segment.name}
                     </button>
                 </h2>

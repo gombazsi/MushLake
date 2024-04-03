@@ -93,7 +93,3 @@ function onInit(){
 function openInsta(user){
     window.open("https://www.instagram.com/"+user, "_blank");
 }
-
-function scrollToTop(){
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
