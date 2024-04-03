@@ -36,7 +36,7 @@ const segments = [
     },
     {
         name: "Live visuals all night",
-        id: "3d-logo-animations",
+        id: "live-visuals-all-night",
         content: {
             assets:[
                 {
@@ -61,10 +61,33 @@ const segments = [
         }
     },
     {
-        name: "Custom VJ loops"
+        name: "Custom VJ loops",        
     },
     {
-        name: "Audioreactive effects"
+        name: "Audioreactive effects",
+        id: "audioreactive-effects",
+        content: {
+            assets:[
+                {
+                    name: "hive logo"
+                },
+                {
+                    name: "collab logo"
+                },
+                {
+                    name: "noirnite logo"
+                },
+                {
+                    name: "open air cubes"
+                },
+                {
+                    name: "green ar"
+                },
+                {
+                    name: "goryo ar"
+                }
+            ]
+        }
     },
     {
         name: "Promo videos"
@@ -79,7 +102,7 @@ function createSegments() {
         const segmentHTML = `
             <div class="accordion-item segment">
                 <h2 class="accordion-header" id="heading${index}">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}" onclick="scrollToTop()">
                         ${segment.name}
                     </button>
                 </h2>

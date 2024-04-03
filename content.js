@@ -43,6 +43,9 @@ function closeModal(){
 
     document.body.style.overflow = 'auto';
     document.removeEventListener('touchmove', preventMobileScroll);
+
+    var modalPlayer = videojs("video-player-modal");
+    modalPlayer.pause();
 }
 
 var canSwipe = true;
@@ -89,4 +92,8 @@ function onInit(){
 
 function openInsta(user){
     window.open("https://www.instagram.com/"+user, "_blank");
+}
+
+function scrollToTop(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
