@@ -35,6 +35,23 @@ const segments = [
         }
     },
     {
+        name: "Custom VJ loops",
+        id: "custom-vj-loops",
+        content: {
+            assets:[
+                {
+                    name: "goat 3"
+                },
+                {
+                    name: "goat 1_2"
+                },
+                {
+                    name: "goat 2_2"
+                }
+            ]
+        }    
+    },
+    {
         name: "Live visuals all night",
         id: "live-visuals-all-night",
         content: {
@@ -59,9 +76,6 @@ const segments = [
                 },
             ]
         }
-    },
-    {
-        name: "Custom VJ loops",        
     },
     {
         name: "Audioreactive effects",
@@ -120,7 +134,7 @@ function createSegments() {
                         ${segment.name}
                     </button>
                 </h2>
-                <div id="collapse${index}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" aria-labelledby="heading${index}" data-bs-parent="#segments-container">
+                <div id="collapse${index}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" aria-labelledby="heading${index}">
                     <div class="accordion-body">
                         <div class="container">
                             ${segment.content ? segment.content.assets.map(asset => `
