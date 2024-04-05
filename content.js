@@ -2,11 +2,21 @@ const assets = [];
 const assetsDir = "assets/content";
 var openSrc;
 
+function modalContent(src) {
+    return `
+    <video class="video-js vjs-fill modal-open" id="video-player-modal" data-setup="{}" loop="true" autoplay="true" muted controls>
+        <source src="${src}" type="video/mp4" />
+    </video>`
+} 
+
 function openModal(src){
+    const modalContainer = document.getElementById("modal-container");
+    modalContainer.innerHTML = modalContent(src);
+
     var modalPlayer = videojs("video-player-modal");
     modalPlayer.src({type: 'video/mp4', src: src});
     modalPlayer.fill();
-    
+
     const modal = document.getElementById("player-modal");
     modal.classList.add("modal-open");
     const overlay = document.getElementById("overlay");
@@ -38,6 +48,10 @@ function modalPrev(){
 function closeModal(){
     const modal = document.getElementById("player-modal");
     modal.classList.remove("modal-open");
+
+    const modalContainer = document.getElementById("modal-container");
+    modalContainer.innerHTML = "";
+
     const overlay = document.getElementById("overlay");
     overlay.classList.remove("modal-open");
 
@@ -78,14 +92,8 @@ function resetSwipeDebounce(){
     }, debounceMs)
 }
 
-function enableVjsFill(){    
-    var modalPlayer = videojs("video-player-modal");
-    modalPlayer.fill(true);
-}
-
 function onInit(){
     createSegments();
-    enableVjsFill();
     handleScroll();
     window.addEventListener('scroll', handleScroll);
 }
