@@ -69,10 +69,10 @@ const segments = [
                     name: "cv"
                 },
                 {
-                    name: "collab dark"
+                    name: "teddy"
                 },
                 {
-                    name: "collab"
+                    name: "liveon"
                 },
             ]
         }
