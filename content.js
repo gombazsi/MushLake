@@ -10,7 +10,6 @@ function modalContent(src) {
         data-setup="{}" 
         loop="true" 
         autoplay="true" 
-        muted 
         controls>
         <source src="${src}" type="video/mp4" />
     </video>`
