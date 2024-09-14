@@ -4,7 +4,14 @@ var openSrc;
 
 function modalContent(src) {
     return `
-    <video class="video-js vjs-fill modal-open" id="video-player-modal" data-setup="{}" loop="true" autoplay="true" muted controls>
+    <video 
+        class="video-js vjs-fill modal-open" 
+        preload="auto" id="video-player-modal" 
+        data-setup="{}" 
+        loop="true" 
+        autoplay="true" 
+        muted 
+        controls>
         <source src="${src}" type="video/mp4" />
     </video>`
 } 
