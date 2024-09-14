@@ -102,7 +102,19 @@ function resetSwipeDebounce(){
 function onInit(){
     createSegments();
     handleScroll();
+    preloadVideos();
     window.addEventListener('scroll', handleScroll);
+}
+
+function preloadVideos(){
+    const videos = assets.map(asset => `${assetsDir}/${asset}.mp4`) 
+    videos.forEach((src) => {
+        const video = document.createElement('video');
+        video.src = src;
+        video.preload = "auto";
+        video.style.display = "none";
+        document.body.appendChild(video);
+    });
 }
 
 function openInsta(user){
